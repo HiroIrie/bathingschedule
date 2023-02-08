@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+}
+
+/* タブ関連 */
+.tabs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab-button {
+  padding: 14px 16px;
+  font-size: 17px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  flex: 1;
+  transition: 0.3s;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #ccc;
+}
+
+.tab-content {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  flex: 1;
+}
+
+/* テーブル関連 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: lightgray;
+}
+
+th:first-child,th:nth-child(2),th:nth-child(3){
+  width:15%;
+  min-width: 150px;
+  text-align: center;
+}
+td:first-child,td:nth-child(2),td:nth-child(3){
+  text-align: center;
+}
+
