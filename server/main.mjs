@@ -1,15 +1,16 @@
 import express from 'express';
 import env from 'dotenv';
-
+import './helpers/db.mjs';
+import apiRouter from './api-routes/index.mjs';
 env.config();
 const app=express();
-const port=process.env.PORT || 8080; 
+const port=process.env.PORT||8080;
 
-app.get('/api/user',(req,res)=>{
-    res.send('利用者です');
-})
+app.use(express.json());
+app.use('/api',apiRouter);
 
 
-app.listen(port,(req,res)=>{
-  console.log(`${port}でサーバーが起動しました`);
+
+app.listen(port,()=>{
+    console.log(`${port}でサーバーが起動しました`);
 })

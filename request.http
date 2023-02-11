@@ -1,0 +1,21 @@
+###
+GET http://localhost:8080/api/users
+
+###
+
+PATCH http://localhost:8080/api/users/3333
+
+
+###
+DELETE http://localhost:8080/api/users/63e784f2f3e5450e8d819a98
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+   "name":"山下 清",
+   "bathingDay":"火 金",
+   "ent":"2023/05/14",
+   "remarks":"機械浴 浴前血圧測定 午前中最後に入浴"
+}
