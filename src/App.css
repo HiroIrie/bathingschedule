@@ -65,3 +65,69 @@ td:first-child,td:nth-child(2),td:nth-child(3){
   text-align: center;
 }
 
+/* エラー用 */
+.error{
+  color:red;
+}
+
+/* 入力フォーム */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1c9b38;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #14822e;
+}
+form{
+  width:100%;
+  padding-right:20px;
+}

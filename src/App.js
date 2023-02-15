@@ -1,10 +1,12 @@
 import './App.css';
-import Tabs from './components/Tabs';
+import Tabs from './components/tabs/Tabs';
+import Forms from './components/forms/Forms';
 
 function App() {
   return (
     <div className="App">
-    <Tabs/>
+    {/* <Tabs/> */}
+    <Forms/>
     </div>
   );
 }

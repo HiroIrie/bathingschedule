@@ -1,24 +1,29 @@
 import express from 'express';
-import User from '../models/user.mjs';
+import {body}from "express-validator";
+import { registUser,deleteUser,updateUser,getAllUser } from '../controllers/users.mjs';
+import { requestErrorHandler } from '../helpers/helper.mjs';
+
 const router =express.Router();
 
-router.get('/',async function(req,res){
-    const users=await User.find({"DATE":-1});
-    res.json(users);
- });
+//userの一覧を取得する
+router.get('/',requestErrorHandler(getAllUser) );
  
- router.delete('/:id',async(req,res)=>{
-    const _id=req.params.id;
-   const {deletedCount}=await User.deleteOne({_id});
-   if(deletedCount===0)return res.status(404).json({msg:"Target Not Found"});
-   res.status(201).json({msg:"Delete succeced"});
+ //userの削除
+ router.delete('/:id',requestErrorHandler(deleteUser) );
  
- });
  
- router.post('/',async function(req,res){
-     const user=new User(req.body);
-     const newUser=await user.save();
-     res.status(201).json(newUser);
- });
+ //userの投稿
+ router.post('/',
+ body('name').notEmpty(),
+ body('bathingDay').notEmpty(),
+ body('ent').notEmpty(),
+ requestErrorHandler(registUser) );
+
+ //userの修正
+ router.patch('/:id',
+ body('name').notEmpty(),
+ body('bathingDay').notEmpty(),
+ body('ent').notEmpty(),
+ requestErrorHandler(updateUser) )
 
  export default router;
