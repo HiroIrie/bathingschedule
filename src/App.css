@@ -131,3 +131,66 @@ form{
   width:100%;
   padding-right:20px;
 }
+
+/* 送信前の確認画面 */
+.confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #F2F2F2;
+}
+
+.confirmation-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.input-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.input-value {
+  font-size: 18px;
+  margin: 0;
+}
+
+.confirmation-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation-button {
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 18px;
+  color: #FFFFFF;
+  background-color: #000000;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.confirmation-button:hover {
+  background-color: #444444;
+}
+
+.confirmation-back {
+  margin-right: 20px;
+}
