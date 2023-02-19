@@ -1,10 +1,11 @@
 import React from 'react'
 
-function FormFieldInput(props) {
+function FormFieldInput({name,title,value,type,onChange,required,formErrors}) {
     return (
         <div className="form-field">
-            <label htmlFor={props.name}>{props.title}</label>
-            <input type={props.type} id={props.name} name={props.name} required={props.required} onChange={props.onChange} value={props.value}/>
+            <label htmlFor={name}>{title}</label>
+            <input type={type} id={name} name={name} required={required} onChange={onChange} value={value} />
+            <p className="errorMsg">{formErrors}</p>
         </div>
     )
 }

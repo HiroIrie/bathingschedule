@@ -8,7 +8,7 @@ function Confirmation({value,onRegist,onBack}) {
   <h2 className="confirmation-title">入力内容の確認</h2>
   <div className="input-container">
     <InputField value={value.name} title="名前"/>
-    <InputField value={value.birthingDay} title="入浴日"/>
+    <InputField value={value.bathingDay} title="入浴日"/>
     <InputField value={value.ent} title="退所日"/>
     <InputField value={value.remarks} title="備考"/>
   </div>

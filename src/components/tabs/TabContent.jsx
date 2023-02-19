@@ -10,7 +10,7 @@ function TabContent(props) {
              props.activeTab === day && (
                 <div>
                   <h2>{day}曜日の入浴者</h2>
-                  <Table day={day}/>
+                  <Table data={props.data} day={day}/>
                 </div>
               )
             }

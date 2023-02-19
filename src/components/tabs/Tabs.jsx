@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TabButton from "./TabButton";
 import TabContent from "./TabContent";
 
-function Tabs() {
+function Tabs(props) {
     const today=new Date();
     const daysOfWeek = ["月", "火", "水", "木", "金", "土", "日"];
     const dayOfWeek=daysOfWeek[today.getUTCDay()-1];
@@ -22,7 +22,7 @@ function Tabs() {
                 })}
             </div>
             <div className="tab-content">
-                <TabContent daysOfWeek={daysOfWeek} activeTab={activeTab} />
+                <TabContent data={props.data} daysOfWeek={daysOfWeek} activeTab={activeTab} />
             </div>
 
 

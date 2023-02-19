@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../commons/Button';
 import FormFieldInput from './FormFieldInput';
 import FormFieldSelect from './FormFieldSelect';
@@ -12,7 +12,9 @@ function Forms() {
     const [formValues, setFormValues] = useState(initialValues);
     const [error, setError] = useState(null);
     const [onloaded, setOnloaded] = useState(null);
-    const [confirm, setConfirm] = useState(null);
+    const [confirm, setConfirm] = useState(false);
+    const[formErrors,setFormErrors]=useState({});
+    const[isSumit,setIsSubmit]=useState(false);
 
     //formの変更をformvaluesに格納する処理
     const handleChange = (e) => {
@@ -20,12 +22,42 @@ function Forms() {
         setFormValues({
             ...formValues, [name]: value
         })
+        console.log(formValues)
     }
 
     //送信画面へ移動
     const handleSubmit = (e) => {
         e.preventDefault();
-        setConfirm("comfirm");
+        setFormErrors(validate(formValues));
+        setIsSubmit(true);
+        console.log(isSumit)
+    }
+
+    useEffect(() => {
+        if (Object.keys(formErrors).length === 0&&isSumit) {
+          setConfirm(true);
+        }
+      }, [formErrors]);
+
+
+    //バリデーション関数
+    const validate=(values)=>{
+      const errors={};
+      const today=new Date();
+      const ent=new Date(values.ent);
+      console.log(today);
+      if(!values.name){
+        errors.name="*名前を入力して下さい"
+      }
+      if(!values.bathingDay){
+        errors.bathingDay="*入浴日を設定して下さい"
+      }
+      if(!values.ent){
+        errors.ent="*退所日を設定して下さい"
+      }else if(ent<today){
+        errors.ent="*退所日は本日よりも後の日で設定して下さい"
+      }
+      return errors;
     }
 
     //データベースへ保存
@@ -42,7 +74,8 @@ function Forms() {
 
     //入力画面に戻る処理
     const handleBack = () => {
-        setConfirm(null);
+        setConfirm(false);
+        setIsSubmit(false);
     }
 
     if (error) {
@@ -51,15 +84,15 @@ function Forms() {
         )
     }
     if (onloaded === null) {
-        if (confirm === null) {
+        if (confirm===false) {
             return (
                 <div className="form-container">
                     <form onSubmit={(e) => { handleSubmit(e) }}>
-                        <FormFieldInput name="name" title="名前" value={formValues.name} type="text" required onChange={(e) => { handleChange(e) }} />
+                        <FormFieldInput name="name" title="名前" value={formValues.name} type="text"  onChange={(e) => { handleChange(e) }} formErrors={formErrors.name}/>
 
-                        <FormFieldSelect selectItems={selectItems} name="bathingDay" value={formValues.bathingDay} required onChange={(e) => { handleChange(e) }} />
+                        <FormFieldSelect selectItems={selectItems} name="bathingDay" value={formValues.bathingDay}  onChange={(e) => { handleChange(e) }}  formErrors={formErrors.bathingDay}/>
 
-                        <FormFieldInput name="ent" title="退所日" type="date" value={formValues.ent} required onChange={(e) => { handleChange(e) }} />
+                        <FormFieldInput name="ent" title="退所日" type="date" value={formValues.ent}  onChange={(e) => { handleChange(e) }} formErrors={formErrors.ent} />
 
                         <FormFieldTextarea name="remarks" title="備考" rows="4" value={formValues.remarks} onChange={(e) => { handleChange(e) }} />
 

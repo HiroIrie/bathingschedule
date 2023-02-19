@@ -1,10 +1,10 @@
 import React from 'react'
 
-function FormFieldTextarea(props) {
+function FormFieldTextarea({name,title,rows,required,value,onChange}) {
     return (
         <div className="form-field">
-            <label htmlFor={props.name}>{props.title}</label>
-            <textarea id={props.name} name={props.name} rows={props.rows} required={props.required} value={props.value} onChange={props.onChange}></textarea>
+            <label htmlFor={name}>{title}</label>
+            <textarea id={name} name={name} rows={rows} required={required} value={value} onChange={onChange}></textarea>
         </div>
     )
 }
